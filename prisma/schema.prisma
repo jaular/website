@@ -1,0 +1,22 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model projects {
+  id     String @id @default(uuid())
+  title  String @db.VarChar(256)
+  url    String @db.VarChar(256)
+  imgUrl String @db.VarChar(256)
+}
+
+model views {
+  slug  String @id @db.VarChar(128)
+  count BigInt @default(1)
+}

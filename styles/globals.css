@@ -1,16 +1,143 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/ibm-plex-sans-var.woff2) format("woff2");
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "Gloria Hallelujah";
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url(/fonts/gloria-hallelujah.woff2) format("woff2");
 }
 
-* {
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.prose-article {
+  @apply prose-a:font-normal prose-a:decoration-dotted prose-a:decoration-2 prose-a:no-underline hover:prose-a:underline focus:prose-a:underline prose-a:text-blue-400 dark:prose-a:text-blue-100 hover:prose-a:decoration-blue-200 focus:prose-a:decoration-blue-200 focus:prose-a:outline-none prose-blockquote:border-violet-400 dark:prose-blockquote:border-violet-100 marker:text-slate-600 dark:marker:text-slate-400 prose-headings:text-black dark:prose-headings:text-white prose-headings:scroll-mt-24 prose-p:text-black dark:prose-p:text-white prose-strong:text-black dark:prose-strong:text-white prose-li:text-black dark:prose-li:text-white prose-code:text-violet-400 dark:prose-code:text-violet-100 prose-pre:bg-steel-gray-300;
+}
+
+.capsize::before {
+  content: "";
+  margin-bottom: -0.098em;
+  display: table;
+}
+
+.capsize::after {
+  content: "";
+  margin-top: -0.219em;
+  display: table;
+}
+
+prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: theme("colors.slate.400");
+}
+
+.token.punctuation,
+.token.property-access {
+  color: #f8f8f2;
+}
+
+.token.number,
+.token.console.class-name {
+  color: #bd93f9;
+}
+
+.token.selector,
+.token.attr-name,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.atrule,
+.token.method.function.property-access,
+.token.maybe-class-name {
+  color: #50fa7b;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.punctuation.attr-equals,
+.token.interpolation-punctuation.punctuation {
+  color: #ff79c6;
+}
+
+.token.rule,
+.token.keyword,
+.token.tag {
+  color: #ff79c6;
+}
+
+.token.regex,
+.token.string,
+.token.important,
+.token.variable,
+.token.attr-value {
+  color: #f1fa8c;
+}
+
+.token.property,
+.token.class-name {
+  color: #8be9fd;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.rehype-code-title {
+  /* @apply px-5 py-3 font-mono text-sm text-white bg-steel-gray-400 rounded-t-md; */
+  background-color: #11141d;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  color: theme("colors.white");
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.rehype-code-title + pre {
+  margin-top: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.code-line {
+  color: #f8f8f2;
+}
+
+.token.interpolation,
+.token.parameter {
+  color: #ffb86c;
 }
